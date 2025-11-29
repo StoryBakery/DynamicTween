@@ -1,23 +1,33 @@
 name = "story_bakery/dynamic_tween"
 version = "0.1.0"
 license = "MIT"
-includes = ["pesde.toml", "LICENSE", "README.md", ".pesde/scripts/roblox_sync_config_generator.luau", ".pesde/scripts/sourcemap_generator.luau", "src/**/*.luau", "src/**/*.json", "tests/**/*.luau"]
+includes = [
+    "pesde.toml",
+    "LICENSE",
+    "README.md",
+    ".pesde/scripts/roblox_sync_config_generator.luau",
+    ".pesde/scripts/sourcemap_generator.luau",
+    "src/**/*.luau",
+    "src/**/*.json",
+    "tests/**/*.luau",
+]
 
 [target]
 environment = "roblox"
 lib = "src/DynamicTween.luau"
-build_files = [
-    "src",
-]
+build_files = ["src"]
 
 [indices]
 default = "https://github.com/pesde-pkg/index"
 
+[wally_indices]
+default = "https://github.com/UpliftGames/wally-index"
+
 [dependencies]
-LinearInterpolation = { workspace = "story_bakery/linear_interpolation", version = "^" }
-Maid = { workspace = "story_bakery/maid", version = "^" }
-MathUtil = { workspace = "story_bakery/math_util", version = "^" }
-Signal = { workspace = "story_bakery/signal", version = "^" }
+LinearInterpolation = { repo = "Story-Bakery/LinearInterpolation", rev = "main" }
+Maid = { repo = "Story-Bakery/Maid", rev = "main" }
+MathUtil = { repo = "Story-Bakery/MathUtil", rev = "main" }
+Signal = { repo = "Story-Bakery/Signal", rev = "main" }
 
 [scripts]
 roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
