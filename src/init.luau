@@ -11,10 +11,10 @@
 
 local RunService = game:GetService("RunService")
 
-local LinearInterpolation = require("../roblox_packages/LinearInterpolation")
-local Maid = require("../roblox_packages/Maid")
-local MathUtil = require("../roblox_packages/MathUtil")
-local Signal = require("../roblox_packages/Signal")
+local LinearInterpolation = require("./roblox_packages/LinearInterpolation")
+local Maid = require("./roblox_packages/Maid")
+local MathUtil = require("./roblox_packages/MathUtil")
+local Signal = require("./roblox_packages/Signal")
 
 local easingsByStyleAndDirection = MathUtil.easingsByStyleAndDirection
 local HISTORY_RETENTION_DURATION = 30
@@ -31,8 +31,6 @@ type PlaySnapshot = {
 	Time: number,
 	LastProgress: number,
 }
-
-
 
 export type DynamicTween<Value = any> = setmetatable<{
 	--[=[
@@ -147,7 +145,6 @@ export type DynamicTween<Value = any> = setmetatable<{
 	_lastObservedElapsedTime: number,
 }, typeof(DynamicTween)>
 
-
 --[=[
 	@type DynamicTween.StepEvent =
 		"Heartbeat" | "RenderStepped" | "Stepped" | "PostSimulation" | "PreSimulation" | Signal.Signal | RBXScriptSignal
@@ -242,8 +239,7 @@ function DynamicTween.new<Value>(params: DynamicTweenParams<Value>): DynamicTwee
 	self.Callback = params.Callback or error("Missing Callback")
 	self.StepEvent = params.StepEvent or "Heartbeat"
 
-	self.Interpolation = params.Interpolation
-		or LinearInterpolation.GetFunctionFromValueType(self.Start)
+	self.Interpolation = params.Interpolation or LinearInterpolation.GetFunctionFromValueType(self.Start)
 
 	self.RepeatCount = params.RepeatCount or 0
 	self.Reverses = params.Reverses or false
@@ -281,11 +277,7 @@ function DynamicTween:_onElapsedTimeChanged(newTime: number)
 		return
 	end
 
-	if
-		self.IsFinished
-		and self._historyExpirationTime ~= math.huge
-		and newTime >= self._historyExpirationTime
-	then
+	if self.IsFinished and self._historyExpirationTime ~= math.huge and newTime >= self._historyExpirationTime then
 		self:_clearPlaybackHistory()
 		return
 	end
@@ -352,10 +344,7 @@ end
 	@param params DynamicTweenParams<Value> -- 트윈 설정.
 	@return DynamicTween<Value> -- 지정된 타이머와 연결된 트윈.
 ]=]
-function DynamicTween.fromTimer<Value>(
-	timer: DynamicTimer,
-	params: DynamicTweenParams<Value>
-): DynamicTween<Value>
+function DynamicTween.fromTimer<Value>(timer: DynamicTimer, params: DynamicTweenParams<Value>): DynamicTween<Value>
 	params.Timer = timer
 	return DynamicTween.new(params)
 end
