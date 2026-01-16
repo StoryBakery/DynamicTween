@@ -1,4 +1,4 @@
-name = "story_bakery/dynamic_tween"
+name = "storybakery/dynamic_tween"
 version = "0.1.0"
 license = "MIT"
 includes = ["pesde.toml", "README.md", "src/**"]
