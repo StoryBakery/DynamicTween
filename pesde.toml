@@ -1,5 +1,5 @@
 name = "storybakery/dynamic_tween"
-version = "0.1.0"
+version = "0.1.1"
 license = "MIT"
 includes = ["pesde.toml", "README.md", "src/**"]
 
@@ -15,19 +15,24 @@ default = "https://github.com/pesde-pkg/index"
 default = "https://github.com/UpliftGames/wally-index"
 
 [dependencies]
-LinearInterpolation = { repo = "https://github.com/StoryBakery/LinearInterpolation", rev = "main" }
-Maid = { repo = "https://github.com/StoryBakery/Maid", rev = "main" }
-MathUtil = { repo = "https://github.com/StoryBakery/MathUtil", rev = "main" }
-Signal = { repo = "https://github.com/StoryBakery/Signal", rev = "main" }
+LinearInterpolation = { repo = "https://github.com/StoryBakery/LinearInterpolation", rev = "c522819b5515edb45f1518244252f58c8f9e05ee" }
+Maid = { repo = "https://github.com/StoryBakery/Maid", rev = "d23aca3d40f14b4f08ff83f33119094de1b9e819" }
+MathUtil = { repo = "https://github.com/StoryBakery/MathUtil", rev = "273845db3ca6be087a8ba9ae6505a234d0bd5683" }
+Signal = { repo = "https://github.com/StoryBakery/Signal", rev = "6b736fa475ea571a0cb488b7ffbcc0f775d9fb5a" }
 
 [scripts]
 roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
 sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
 
 [dev_dependencies]
+setup-project-configs = { repo = "https://github.com/StoryBakery/setup-project-configs", rev = "0ba9379f8709c3e846ae04180fd8fba854ed52ae" }
+pesde-gitrev = { repo = "https://github.com/StoryBakery/pesde-gitrev", rev = "720daa5342f214c4ee53c978e56daae5884199a2" }
 scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
 rojo = { name = "pesde/rojo", version = "^7.5.1", target = "lune" }
 
 [engines]
 pesde = "^0.7.0"
 lune = "^0.10.2"
+
+[overrides]
+"Maid>Signal" = "Signal"
